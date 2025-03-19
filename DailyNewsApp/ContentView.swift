@@ -1,21 +1,22 @@
-//
-//  ContentView.swift
-//  DailyNewsApp
-//
-//  Created by Marcin Byczyński on 19/03/2025.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var inputText: String = ""
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack{
+            LinearGradient(gradient: Gradient(colors:[.white, .orange,.red]), startPoint: .topTrailing, endPoint: .bottomTrailing)
+                .edgesIgnoringSafeArea(.all)
+            VStack{
+                Spacer()
+                Text(inputText)
+                    .padding()
+                TextField("Search ...", text: $inputText).padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+            }
         }
-        .padding()
+        
     }
 }
 
