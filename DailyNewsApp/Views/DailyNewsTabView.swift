@@ -2,33 +2,34 @@ import SwiftUI
 
 struct DailyNewsTabView: View {
     var body: some View {
-        TabView{
-            DailyNewsListView()
-                .tabItem{
-                    Image(systemName:  "house")
-                    Text("Home")
-                }
-            
+        TabView {
             CategoriesView()
-                .tabItem{
+                .tabItem {
                     Image(systemName: "line.horizontal.3.decrease")
                     Text("Categories")
                 }
-            
+
             KeywordsView()
-                .tabItem{
-                    Image(systemName:  "magnifyingglass")
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
-            
+
+            DailyNewsListView()
+                .tabItem {
+                        Image(systemName: "house")
+                        Text("Home")
+                }
+
             MyNewsView()
-                .tabItem{
-                    Image(systemName:  "heart")
+                .tabItem {
+                    Image(systemName: "heart")
                     Text("My News")
                 }
+
             AccountView()
-                .tabItem{
-                    Image(systemName:  "person")
+                .tabItem {
+                    Image(systemName: "person")
                     Text("Profile")
                 }
         }
