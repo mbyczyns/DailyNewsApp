@@ -12,7 +12,7 @@ struct MyNewsView: View {
         
         VStack{
             NavigationView{
-                Text("")
+                Text("🚧 Under Construction 🚧")
                     .navigationTitle("My News!")
 //                navigationTitle("Mynews")
             }
