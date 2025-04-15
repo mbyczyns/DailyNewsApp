@@ -9,18 +9,14 @@ import SwiftUI
 
 struct MyNewsView: View {
     var body: some View {
-        
-        VStack{
-            NavigationView{
-                Text("🚧 Under Construction 🚧")
-                    .navigationTitle("My News!")
-//                navigationTitle("Mynews")
+        NavigationStack{
+            VStack{
+                NavigationView{
+                    Text("🚧 Under Construction 🚧")
+                        .navigationTitle("My News!")
+                }
+                Spacer()
             }
-            HStack{
-                
-
-            }
-            Spacer()
         }
     }
 }
