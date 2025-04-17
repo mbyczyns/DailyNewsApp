@@ -1,10 +1,3 @@
-//
-//  SnippetListCell.swift
-//  DailyNewsApp
-//
-//  Created by Marcin Byczyński on 08/04/2025.
-//
-
 import SwiftUI
 
 struct SnippetListCell: View {

@@ -33,5 +33,6 @@ struct Categories {
     static let Books = Category(name: "Books", systemIconName: "books.vertical", color:RGBColor(red: 0.9, green: 0.4, blue: 0.4))
     static let Arts = Category(name: "Arts", systemIconName: "theatermask.and.paintbrush", color: RGBColor(red: 0.4, green: 0.8, blue: 0.4))
     static let Fashion = Category(name: "Fashion", systemIconName: "tshirt", color: RGBColor(red: 0.6, green: 0.5, blue: 0.3))
+    static let categories=[Business, Science, Weather, Politics, Travel, Health, Sports, Books, Arts, Fashion]
 }
 

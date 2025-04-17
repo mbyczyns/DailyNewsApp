@@ -1,21 +1,27 @@
-//
-//  CategoriesView.swift
-//  DailyNewsApp
-//
-//  Created by Marcin Byczyński on 08/04/2025.
-//
-
 import SwiftUI
 
 struct CategoriesView: View {
+
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+
     var body: some View {
-        VStack{
-            NavigationView{
-                Text("🚧 Under Construction 🚧")
-                    .navigationTitle("Categories View ")
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing:10) {
+                    ForEach(Categories.categories, id: \.name) { category in
+                        CategoryCell(category: category)
+                    }
+                }
+                .padding(10)
             }
-        }    }
+            .navigationTitle("Categories View")
+        }
+    }
 }
+
 
 #Preview {
     CategoriesView()
