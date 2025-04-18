@@ -4,11 +4,12 @@ struct KeywordsView: View {
     @State private var searchText: String = ""
 
     var body: some View {
+        
         NavigationView {
             VStack {
                 TextField("Enter keyword...", text: $searchText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                Text(searchText)
                 Spacer()
             }
             .navigationTitle("🔑 Search Keywords:")

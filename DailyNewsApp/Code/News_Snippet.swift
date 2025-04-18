@@ -10,7 +10,7 @@ struct News_Snippet: Decodable {
     let pub_date: String;
 }
 
-struct SnippetsResponse {
+struct SnippetsResponse: Decodable {
     let request: [News_Snippet]
 }
 
