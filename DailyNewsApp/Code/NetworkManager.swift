@@ -6,7 +6,7 @@ final class NetworkManager{
     static let baseURL = "http://192.168.1.50:5555"
     private let keywordsURL = baseURL + "/search"
     private let categoriesURL = baseURL + "/categories"
-    private let testURL = baseURL + "/search?q=Bitcoin"
+    private let testURL = baseURL + "/search?q=Paris"
     
     private init() {}
     

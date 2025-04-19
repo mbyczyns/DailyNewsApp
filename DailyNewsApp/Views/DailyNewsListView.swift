@@ -2,32 +2,23 @@ import SwiftUI
 
 struct DailyNewsListView: View {
     
-    @State private var snippets: [News_Snippet] = []
+    @StateObject var viewModel = SnippetsListViewModel()
+    
     
     var body: some View {
         NavigationView{
-            List(snippets, id: \.title) {snippet in
+            List(viewModel.snippets, id: \.title) {snippet in
                 SnippetListCell(snippet: snippet)
             }
             .navigationTitle("Snippets!")
         }
         .onAppear{
-            getArticles()
+            viewModel.getArticles()
         }
-    }
-    
-    func getArticles(){
-        NetworkManager.shared.getArticles{ result in
-            DispatchQueue.main.async{
-                switch result{
-                case .success(let snippets):
-                    self.snippets = snippets
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
-            
-        }
+        .alert(item: $viewModel.alertItem) {alertItem in
+            Alert(title: alertItem.title,
+                  message: alertItem.message,
+                  )}
     }
 }
 
