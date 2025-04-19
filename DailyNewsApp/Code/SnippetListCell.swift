@@ -6,8 +6,7 @@ struct SnippetListCell: View {
     var body: some View {
         HStack{
             VStack{
-                Image("photo")
-                    .resizable()
+                ArticleRemoteImage(urlString: snippet.main_image_url)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 400, height: 240)
                     .cornerRadius(8)
