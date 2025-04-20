@@ -37,18 +37,15 @@ struct ArticleDetailedView: View {
                 
                 Spacer()
                 
-                HStack(spacing: 16) {
-                    Button(action: { print("zapisuje") }) {
-                        Text("Save for later")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
+                VStack {
                     
                     Button(action: { print("czytamm") }) {
-                        Text("Save for later")
+                        Text("Read now")
                             .frame(maxWidth: .infinity)
+                            .fontWeight(.bold)
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
                 }
             }
         }
@@ -59,21 +56,39 @@ struct ArticleDetailedView: View {
         .cornerRadius(12)
         .shadow(radius: 40)
         .overlay(
-            Button {
-                isShowingDetail = false
-            } label: {
-                ZStack {
-                    Circle()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .opacity(0.6)
-                    Image(systemName: "xmark")
-                        .frame(width: 44, height: 44)
-                        .imageScale(.small)
+            HStack(spacing: 10) {
+                Button {
+                    print("downloaded article") // TODO
+                } label: {
+                    ZStack {
+                        Circle()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .opacity(0.8)
+                        Image(systemName: "square.and.arrow.down")
+                            .frame(width: 44, height: 44)
+                            .imageScale(.medium)
+                    }
                 }
-            },
+
+                Button {
+                    isShowingDetail = false
+                } label: {
+                    ZStack {
+                        Circle()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .opacity(0.8)
+                        Image(systemName: "xmark")
+                            .frame(width: 44, height: 44)
+                            .imageScale(.small)
+                    }
+                }
+            }
+            .padding(8),
             alignment: .topTrailing
         )
+
     }
 }
 

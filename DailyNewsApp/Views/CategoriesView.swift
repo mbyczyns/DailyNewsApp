@@ -17,7 +17,7 @@ struct CategoriesView: View {
                 }
                 .padding(10)
             }
-            .navigationTitle("Categories View")
+            .navigationTitle("Categories")
         }
     }
 }
