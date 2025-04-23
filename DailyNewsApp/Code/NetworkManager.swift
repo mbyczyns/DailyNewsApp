@@ -5,7 +5,7 @@ final class NetworkManager{
     static let shared = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
     
-    static let baseURL = "http://192.168.1.50:5555"
+    static let baseURL = "http://10.160.33.18:5555"
     private let keywordsURL = baseURL + "/search"
     private let categoriesURL = baseURL + "/categories"
     private let testURL = baseURL + "/search?q=Paris"

@@ -9,7 +9,7 @@ struct ArticleDetailedView: View {
         VStack {
             ArticleRemoteImage(urlString: article_snippet.main_image_url)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 320, height: 225)
+                .frame(width: 330, height: 210)
             
             VStack {
                 Text(article_snippet.title)
