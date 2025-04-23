@@ -27,5 +27,5 @@ struct SnippetListCell: View {
 }
 
 #Preview {
-    SnippetListCell(snippet: MockData.sampleSnippet)
+    SnippetListCell(snippet: MockData.sampleSnippet4)
 }

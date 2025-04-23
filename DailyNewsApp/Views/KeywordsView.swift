@@ -16,7 +16,7 @@ struct KeywordsView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         Button {
                             if searchKeyword != ""{
-                                print("making a request with keyword: " +  searchKeyword)
+                                viewModel.getArticles(searchedPhrase: searchKeyword)
                             } else{
                                 alertItem = AlertContent.noKeyword
                             }
@@ -26,7 +26,6 @@ struct KeywordsView: View {
                                 .imageScale(.medium)
                         }
                     }
-                    Text(searchKeyword)
                     List(viewModel.snippets, id: \.title) { snippet in
                         SnippetListCell(snippet: snippet)
                             .onTapGesture {
@@ -37,13 +36,12 @@ struct KeywordsView: View {
                             }
                     }
                 }
+                .background(Color.white.ignoresSafeArea())
                 .navigationTitle("🔑 Search Keywords:")
                 .padding()
                 
             }
-            .onAppear {
-                viewModel.getArticles()
-            }
+
             .blur(radius: isShowingDetail ? 20 : 0)
             .disabled(isShowingDetail)
 

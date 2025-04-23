@@ -4,16 +4,22 @@ import UIKit
 final class NetworkManager{
     static let shared = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
+        
+//    final let testURL = baseURL + "/search?q=Paris"
     
-    static let baseURL = "http://10.160.33.18:5555"
-    private let keywordsURL = baseURL + "/search"
-    private let categoriesURL = baseURL + "/categories"
-    private let testURL = baseURL + "/search?q=Paris"
+    struct API {
+        static let baseURL = "http://10.160.33.18:5555"
+
+        static func buildURL(with endpoint: String) -> URL? {
+            return URL(string: baseURL + endpoint)
+        }
+    }
+
     
     private init() {}
     
-    func getArticles(completed: @escaping (Result<[News_Snippet], DNError>) -> Void) {
-        guard let url = URL(string: testURL) else {
+    func getArticles(searchedPhrase: String, completed: @escaping (Result<[News_Snippet], DNError>) -> Void) {
+        guard let url = API.buildURL(with: "/search?q=" + searchedPhrase) else {
             completed(.failure(.invalidURL))
             return
         }
