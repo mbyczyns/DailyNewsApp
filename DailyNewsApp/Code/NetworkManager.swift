@@ -8,7 +8,7 @@ final class NetworkManager{
 //    final let testURL = baseURL + "/search?q=Paris"
     
     struct API {
-        static let baseURL = "http://10.160.33.18:5555"
+        static let baseURL = "http://192.168.0.106:5555"
 
         static func buildURL(with endpoint: String) -> URL? {
             return URL(string: baseURL + endpoint)
@@ -19,7 +19,7 @@ final class NetworkManager{
     private init() {}
     
     func getArticles(searchedPhrase: String, completed: @escaping (Result<[News_Snippet], DNError>) -> Void) {
-        guard let url = API.buildURL(with: "/search?q=" + searchedPhrase) else {
+        guard let url = API.buildURL(with: "/search?fq=" + searchedPhrase) else {
             completed(.failure(.invalidURL))
             return
         }
@@ -30,11 +30,22 @@ final class NetworkManager{
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.invalidResponse))
-                return
+            guard let response = response as? HTTPURLResponse else {
+                        completed(.failure(.invalidResponse))
+                        return
+                    }
+
+            switch response.statusCode {
+                case 200:
+                    break // OK
+                case 500:
+                    completed(.failure(.keywordNotFound))
+                    return
+                default:
+                    completed(.failure(.invalidResponse))
+                    return
             }
-            
+    
             guard let data = data else {
                 completed(.failure(.invalidData))
                 return

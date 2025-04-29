@@ -12,14 +12,18 @@ final class SnippetsListViewModel: ObservableObject {
                     self.snippets = snippets
                 case .failure(let error):
                     switch error {
-                    case .invalidResponse:
-                        self.alertItem = AlertContent.invalidResponse
-                    case .invalidURL:
-                        self.alertItem = AlertContent.invalidURL
-                    case .invalidData:
-                        self.alertItem = AlertContent.invalidData
-                    case .unableToComplete:
-                        self.alertItem = AlertContent.unableToComplete
+                        case .invalidResponse:
+                            self.alertItem = AlertContent.invalidResponse
+                        case .invalidURL:
+                            self.alertItem = AlertContent.invalidURL
+                        case .invalidData:
+                            self.alertItem = AlertContent.invalidData
+                        case .unableToComplete:
+                            self.alertItem = AlertContent.unableToComplete
+                        case .noKeyword:
+                            self.alertItem = AlertContent.noKeyword
+                        case .keywordNotFound:
+                            self.alertItem = AlertContent.keywordNotFound
                     }
                 }
             }

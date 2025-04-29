@@ -21,7 +21,7 @@ struct DailyNewsListView: View {
                 .navigationTitle("Snippets!")
             }
             .onAppear {
-                viewModel.getArticles(searchedPhrase: "Rome")
+                viewModel.getArticles(searchedPhrase: "Phasmophobia")
             }
             .blur(radius: isShowingDetail ? 20 : 0)
             .disabled(isShowingDetail)

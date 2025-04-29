@@ -17,4 +17,6 @@ struct AlertContent{
     static let unableToComplete = AlertItem(title: Text("Server error"), message: Text("Unable to complete your request. Check internet and if server is running"), dismissButton: .default(Text("OK")))
     
     static let noKeyword = AlertItem(title: Text("Missing Keyword!"), message: Text("You need to enter a keyword first."), dismissButton: .default(Text("OK")))
+    
+    static let keywordNotFound = AlertItem(title: Text("Wrong keyword"), message: Text("Results of your search haven't been found"), dismissButton: .default(Text("OK")))
 }

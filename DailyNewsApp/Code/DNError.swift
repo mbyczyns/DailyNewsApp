@@ -5,4 +5,6 @@ enum DNError: Error{
     case invalidResponse
     case invalidData
     case unableToComplete
+    case noKeyword
+    case keywordNotFound
 }

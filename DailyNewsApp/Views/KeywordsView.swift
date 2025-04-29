@@ -17,9 +17,11 @@ struct KeywordsView: View {
                         Button {
                             if searchKeyword != ""{
                                 viewModel.getArticles(searchedPhrase: searchKeyword)
-                            } else{
-                                alertItem = AlertContent.noKeyword
                             }
+                            else {
+                                viewModel.alertItem = AlertContent.noKeyword
+                            }
+
                         } label: {
                             Image(systemName: "magnifyingglass")
                                 .frame(width: 44, height: 44)
@@ -35,12 +37,13 @@ struct KeywordsView: View {
                                 }
                             }
                     }
+                    .frame(width: 350, alignment: .center)
                 }
                 .background(Color.white.ignoresSafeArea())
                 .navigationTitle("🔑 Search Keywords:")
                 .padding()
                 
-            }
+            }.background(Color.white.ignoresSafeArea())
 
             .blur(radius: isShowingDetail ? 20 : 0)
             .disabled(isShowingDetail)
@@ -57,7 +60,7 @@ struct KeywordsView: View {
             }
         }
         .animation(.easeInOut, value: isShowingDetail)
-        .alert(item: $alertItem) { alertItem in
+        .alert(item: $viewModel.alertItem) { alertItem in
                         Alert(title: alertItem.title,
                               message: alertItem.message,
                               dismissButton: alertItem.dismissButton)
