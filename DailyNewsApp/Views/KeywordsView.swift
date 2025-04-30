@@ -14,6 +14,7 @@ struct KeywordsView: View {
                     HStack{
                         TextField("Enter keyword...", text: $searchKeyword)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.leading)
                         Button {
                             if searchKeyword != ""{
                                 viewModel.getArticles(searchedPhrase: searchKeyword)
@@ -37,10 +38,10 @@ struct KeywordsView: View {
                                 }
                             }
                     }
-                    .frame(width: 350, alignment: .center)
+                    .frame( alignment: .center)
                 }
                 .navigationTitle("🔑 Search Keywords:")
-                .padding()
+
                 
             }.background(Color.white.ignoresSafeArea())
 

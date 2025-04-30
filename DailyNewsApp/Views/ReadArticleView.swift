@@ -32,8 +32,8 @@ struct ReadArticleView: View {
                 .fixedSize(horizontal: false, vertical: true)
             Spacer()
             Link(destination: URL(string: article_snippet.web_url)!) {
-                    Text("Czytaj w New York Times")  // albo `article_snippet.web_url` jeśli chcesz wyświetlać link
-                        .foregroundColor(.blue)      // styl linku
+                    Text("Czytaj w New York Times")
+                        .foregroundColor(.blue)      
                         .underline()
                 }        }
 //        .overlay(Button {
