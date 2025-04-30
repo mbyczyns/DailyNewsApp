@@ -28,8 +28,8 @@ struct ArticleDetailedView: View {
                 
                 Text(article_snippet.print_headline)
                     .padding(10)
-                    .font(.body)
-                    .fontWeight(.light)
+                    .font(.headline)
+                    .fontWeight(.regular)
                     .frame(maxWidth: 350)
                     .multilineTextAlignment(.center)
                     .lineLimit(nil)
@@ -37,21 +37,19 @@ struct ArticleDetailedView: View {
                 
                 Spacer()
                 
-                VStack {
-                    
-                    Button(action: { print("czytamm") }) {
-                        Text("Read now")
-                            .frame(maxWidth: .infinity)
-                            .fontWeight(.bold)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
+                Button(action: { print("czytamm") }) {
+                    Text("Read now")
+                        .frame(maxWidth: .infinity)
+                        .fontWeight(.bold)
                 }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                
             }
         }
         .padding(.bottom, 20)
         .padding(.horizontal, 20)
-        .frame(width: 320, height: 525)
+        .frame(width: 320, height: 500)
         .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(radius: 40)
