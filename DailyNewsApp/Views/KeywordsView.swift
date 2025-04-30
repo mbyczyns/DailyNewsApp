@@ -39,7 +39,6 @@ struct KeywordsView: View {
                     }
                     .frame(width: 350, alignment: .center)
                 }
-                .background(Color.white.ignoresSafeArea())
                 .navigationTitle("🔑 Search Keywords:")
                 .padding()
                 

@@ -4,11 +4,9 @@ import UIKit
 final class NetworkManager{
     static let shared = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
-        
-//    final let testURL = baseURL + "/search?q=Paris"
     
     struct API {
-        static let baseURL = "http://192.168.0.106:5555"
+        static let baseURL = "http://127.0.0.1:5555"
 
         static func buildURL(with endpoint: String) -> URL? {
             return URL(string: baseURL + endpoint)

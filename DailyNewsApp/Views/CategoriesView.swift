@@ -12,10 +12,11 @@
                 ScrollView {
                     LazyVGrid(columns: columns, spacing:10) {
                         ForEach(Categories.categories, id: \.name) { category in
-                            CategoryCell(category: category)
-                                .onTapGesture {
-                                    print("tapped category: " + category.name)
-                                }
+                            NavigationLink(
+                                destination: CategoryArticlesView(searchedCategory: category.name)
+                            ) {
+                                CategoryCell(category: category)
+                            }
                         }
                     }
                     .padding(10)
