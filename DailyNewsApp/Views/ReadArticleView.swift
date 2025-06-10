@@ -32,10 +32,24 @@ struct ReadArticleView: View {
                 .fixedSize(horizontal: false, vertical: true)
             Spacer()
             Link(destination: URL(string: article_snippet.web_url)!) {
-                    Text("Czytaj w New York Times")
-                        .foregroundColor(.blue)      
-                        .underline()
-                }        }
+                Text("Czytaj w New York Times")
+                    .foregroundColor(.blue)
+                    .underline()
+            }
+            Button(action: {
+                // Tutaj dodaj akcję, np. print("Tapped")
+            }) {
+                Label("Like this Article", systemImage: "heart")
+                    .frame(maxWidth: .infinity)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .padding(0)
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            .padding()
+
+        }
 //        .overlay(Button {
 //            print("exit")
 //        } label: {

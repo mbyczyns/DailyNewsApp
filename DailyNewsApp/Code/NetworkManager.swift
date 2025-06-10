@@ -35,7 +35,7 @@ final class NetworkManager{
 
             switch response.statusCode {
                 case 200:
-                    break // OK
+                    break
                 case 500:
                     completed(.failure(.keywordNotFound))
                     return
@@ -60,6 +60,63 @@ final class NetworkManager{
         }
         task.resume()
     }
+    
+    func likeArticle(with article_url: String, completed: @escaping (Result<Void, DNError>) -> Void) {
+        guard let url = API.buildURL(with: "/likearticle?fq=" + article_url) else {
+            completed(.failure(.invalidURL))
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { _, response, error in
+            if error != nil {
+                completed(.failure(.unableToComplete))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+
+            switch httpResponse.statusCode {
+            case 200:
+                completed(.success(())) // Operacja się powiodła, brak danych
+            default:
+                completed(.failure(.invalidResponse))
+            }
+        }
+
+        task.resume()
+    }
+    
+    func readArticle(with article_url: String, completed: @escaping (Result<Void, DNError>) -> Void) {
+        guard let url = API.buildURL(with: "/readarticle?fq=" + article_url) else {
+            completed(.failure(.invalidURL))
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { _, response, error in
+            if error != nil {
+                completed(.failure(.unableToComplete))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+
+            switch httpResponse.statusCode {
+            case 200:
+                completed(.success(())) // Operacja się powiodła, brak danych
+            default:
+                completed(.failure(.invalidResponse))
+            }
+        }
+
+        task.resume()
+    }
+
     
     func downloadImage(fromURLString urlString: String, completed: @escaping (UIImage?) -> Void){
         let cacheKey = NSString(string: urlString)
