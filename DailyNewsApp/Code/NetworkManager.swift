@@ -12,6 +12,8 @@ final class NetworkManager{
             return URL(string: baseURL + endpoint)
         }
     }
+    
+    
 
     
     private init() {}
@@ -61,7 +63,7 @@ final class NetworkManager{
         task.resume()
     }
     
-    func likeArticle(with article_url: String, completed: @escaping (Result<Void, DNError>) -> Void) {
+    static func likeArticle(with article_url: String, completed: @escaping (Result<Void, DNError>) -> Void) {
         guard let url = API.buildURL(with: "/likearticle?fq=" + article_url) else {
             completed(.failure(.invalidURL))
             return
@@ -85,30 +87,41 @@ final class NetworkManager{
                 completed(.failure(.invalidResponse))
             }
         }
-
+        print("article liked")
         task.resume()
     }
     
-    func readArticle(with article_url: String, completed: @escaping (Result<Void, DNError>) -> Void) {
+    static func readArticle(with article_url: String, completed: @escaping (Result<String, DNError>) -> Void) {
         guard let url = API.buildURL(with: "/readarticle?fq=" + article_url) else {
             completed(.failure(.invalidURL))
             return
         }
 
-        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { _, response, error in
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
             if error != nil {
                 completed(.failure(.unableToComplete))
                 return
             }
 
-            guard let httpResponse = response as? HTTPURLResponse else {
+            guard let httpResponse = response as? HTTPURLResponse,
+                  let data = data else {
                 completed(.failure(.invalidResponse))
                 return
             }
 
             switch httpResponse.statusCode {
             case 200:
-                completed(.success(())) // Operacja się powiodła, brak danych
+                do {
+                    // Dekoduj JSON, wyciągnij "text"
+                    if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                       let text = json["article_text"] as? String {
+                        completed(.success(text))
+                    } else {
+                        completed(.failure(.invalidData))
+                    }
+                } catch {
+                    completed(.failure(.invalidData))
+                }
             default:
                 completed(.failure(.invalidResponse))
             }
@@ -116,6 +129,7 @@ final class NetworkManager{
 
         task.resume()
     }
+
 
     
     func downloadImage(fromURLString urlString: String, completed: @escaping (UIImage?) -> Void){
