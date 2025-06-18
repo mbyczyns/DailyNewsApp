@@ -3,9 +3,11 @@ import SwiftUI
 struct DailyNewsListView: View {
     var body: some View{
         NavigationView{
-            Text("New functions incoming soon")
-            Text("⏱⏱⏱⏱")
-                .navigationTitle("Suggested articles")
+            VStack{
+                Text("Suggesting articles incoming soon ...")
+                    .padding()
+                Text("⏱⏱⏱⏱")
+            }.navigationTitle("Suggested articles")
         }
         
     }
