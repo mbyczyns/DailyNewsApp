@@ -27,8 +27,7 @@ struct AccountView: View {
                 HStack(spacing: 24) {
                                    
                    NavigationLink {
-                       /*FavoritesView(user: tempUser)*/
-                       KeywordsView()
+                       HistoryView(snippets: tempUser.ReadingHistory)
                    } label: {
                        SquareButton(icon: "clock.fill",
                                     title: "History",

@@ -4,10 +4,10 @@ struct DailyNewsTabView: View {
     var body: some View {
         TabView {
             
-            DailyNewsListView()
+            CategoriesView()
                 .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
+                    Image(systemName: "line.horizontal.3.decrease")
+                    Text("Categories")
                 }
             
             KeywordsView()
@@ -16,10 +16,10 @@ struct DailyNewsTabView: View {
                     Text("Search")
                 }
             
-            CategoriesView()
+            DailyNewsListView()
                 .tabItem {
-                    Image(systemName: "line.horizontal.3.decrease")
-                    Text("Categories")
+                        Image(systemName: "sparkles")
+                        Text("Suggest")
                 }
 
             AccountView(tempUser: MockUser)

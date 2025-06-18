@@ -4,7 +4,8 @@ struct DailyNewsListView: View {
     var body: some View{
         NavigationView{
             Text("New functions incoming soon")
-                .navigationTitle("⏱⏱⏱⏱")
+            Text("⏱⏱⏱⏱")
+                .navigationTitle("Suggested articles")
         }
         
     }
