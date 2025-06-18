@@ -27,7 +27,7 @@ struct DailyNewsListView: View {
 //                .navigationTitle("Snippets!")
 //            }
 //            .onAppear {
-//                viewModel.getArticles(searchedPhrase: "Phasmophobia")
+//                viewModel.getArticles(searchedPhrase: "Warsaw")
 //            }
 //            .blur(radius: isShowingDetail ? 20 : 0)
 //            .disabled(isShowingDetail)
